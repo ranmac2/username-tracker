@@ -1,13 +1,8 @@
 import React from "react";
 import "./Card.css";
-import UserInput from "../../components/Users/UserInput/UserInput";
 
 const Card = () => {
-  return (
-    <div className="card">
-      <UserInput />
-    </div>
-  );
+  return <div className="card"></div>;
 };
 
 export default Card;
