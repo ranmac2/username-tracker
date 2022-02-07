@@ -5,7 +5,7 @@ import "./UserList.css";
 
 const UserList = (props) => {
   return (
-    <ul className="goal-list">
+    <ul className="user-list">
       {props.items.map((name) => (
         <User key={name.id} id={name.id} onDelete={props.onDeleteItem}>
           {name.text}

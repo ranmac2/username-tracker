@@ -3,15 +3,12 @@ import React from "react";
 import "./User.css";
 
 const User = (props) => {
-  // const [deleteText, setDeleteText] = useState('');
-
   const deleteHandler = () => {
-    // setDeleteText('(Deleted!)');
     props.onDelete(props.id);
   };
 
   return (
-    <li className="goal-item" onClick={deleteHandler}>
+    <li className="user-item" onClick={deleteHandler}>
       {props.children}
     </li>
   );
