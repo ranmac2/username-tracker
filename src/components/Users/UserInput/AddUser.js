@@ -4,36 +4,29 @@ import Button from "../../../UI/Button/Button";
 import "./AddUser.css";
 import Card from "../../../UI/Card/Card";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
-  const [isValid, setIsValid] = useState(true);
 
   const addUserHandler = (event) => {
     event.preventDefault();
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
-      setIsValid(false);
       return;
     }
     if (+enteredAge < 1) {
-      setIsValid(false);
       return;
     }
-    console.log(enteredUsername, enteredAge);
+    props.onAddUser(enteredUsername, enteredAge);
     setEnteredUsername("");
     setEnteredAge("");
   };
 
   const usernameChangeHandler = (event) => {
-    if (event.target.value.trim().length > 0) {
-      setIsValid(true);
-    }
     setEnteredUsername(event.target.value);
   };
 
   const ageChangeHandler = (event) => {
     if (event.target.value < 0) {
-      setIsValid(false);
       return;
     }
     setEnteredAge(event.target.value);
@@ -56,7 +49,7 @@ const AddUser = () => {
           value={enteredAge}
           onChange={ageChangeHandler}
         ></input>
-        <Button type="submit">{"Add User"}</Button>
+        <Button type="submit">Add User</Button>
       </form>
     </Card>
   );

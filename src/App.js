@@ -2,20 +2,16 @@ import React, { useState } from "react";
 
 import "./App.css";
 import AddUser from "./components/Users/UserInput/AddUser";
+import UserList from "./components/Users/UserList/UserList";
 
 const App = () => {
-  // const [usernames, setUsernames] = useState("");
+  const [userList, setUserList] = useState([]);
 
-  // const addUserHandler = (enteredText) => {
-  //   setUsernames((prevUsernames) => {
-  //     const updatedUsernames = [...prevUsernames];
-  //     updatedUsernames.unshift({
-  //       text: enteredText,
-  //       id: Math.random().toString(),
-  //     });
-  //     return updatedUsernames;
-  //   });
-  // };
+  const addUserHandler = (uName, uAge) => {
+    setUserList((prevUsernames) => {
+      return [...prevUsernames, { name: uName, age: uAge }];
+    });
+  };
 
   // const deleteItemHandler = (userId) => {
   //   setUsernames((prevUsernames) => {
@@ -26,23 +22,10 @@ const App = () => {
   //   });
   // };
 
-  // let content = (
-  //   <p style={{ textAlign: "center" }}>No usernames found. Maybe add one?</p>
-  // );
-
-  // if (usernames.length > 0) {
-  //   content = <UserList items={usernames} onDeleteItem={deleteItemHandler} />;
-  // }
-
   return (
     <div>
-      {/* <section id="goal-form">
-        <UserInput onAddUser={addUserHandler} />
-      </section>
-      <section id="goals">
-        {content}
-      </section> */}
-      <AddUser />
+      <AddUser onAddUser={addUserHandler} />
+      <UserList users={userList} />
     </div>
   );
 };
