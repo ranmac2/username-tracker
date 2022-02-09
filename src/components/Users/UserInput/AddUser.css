@@ -1,31 +1,27 @@
 .form-control {
-  margin: 0.5rem 0;
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
 }
 
 .form-control label {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
-  margin-left: 10px;
 }
 
 .form-control input {
   display: block;
-  text-align: center;
-  width: 95%;
+  width: 100%;
   border: 1px solid #ccc;
   font: inherit;
-  line-height: 1.5rem;
-  padding: 0 0.25rem;
-  margin-left: 10px;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-control input:focus {
   outline: none;
-  background: #fad0ec;
-  border-color: #8b005d;
-}
-
-.form-control button {
-  margin-left: 10px;
+  border-color: #4f005f;
 }

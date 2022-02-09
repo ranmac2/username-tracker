@@ -1,62 +1,64 @@
 import React, { useState } from "react";
 
-// import Button from "../../../UI/Button/Button";
+import Button from "../../../UI/Button/Button";
 import "./AddUser.css";
-
-// const UserInput = (props) => {
-//   const [enteredValue, setEnteredValue] = useState("");
-//   const [isValid, setIsValid] = useState(true);
-
-//   const userInputChangeHandler = (event) => {
-//     if (event.target.value.trim().length > 0) {
-//       setIsValid(true);
-//     }
-//     setEnteredValue(event.target.value);
-//   };
-
-//   const formSubmitHandler = (event) => {
-//     event.preventDefault();
-//     if (enteredValue.trim().length === 0) {
-//       setIsValid(false);
-//       return;
-//     }
-//     props.onAddUser(enteredValue);
-//   };
-
-//   return (
-//     <form onSubmit={formSubmitHandler}>
-//       <div className="form-control">
-//         <label style={{ color: !isValid ? "red" : "black" }}>Username</label>
-//         <input
-//           style={{
-//             borderColor: !isValid ? "red" : "#ccc",
-//             background: !isValid ? "salmon" : "transparent",
-//           }}
-//           type="text"
-//           onChange={userInputChangeHandler}
-//         />
-//       </div>
-//       <Button type="submit">Add User</Button>
-//     </form>
-//   );
-// };
-
-// export default UserInput;
+import Card from "../../../UI/Card/Card";
 
 const AddUser = () => {
+  const [enteredUsername, setEnteredUsername] = useState("");
+  const [enteredAge, setEnteredAge] = useState("");
+  const [isValid, setIsValid] = useState(true);
+
   const addUserHandler = (event) => {
     event.preventDefault();
+    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      setIsValid(false);
+      return;
+    }
+    if (+enteredAge < 1) {
+      setIsValid(false);
+      return;
+    }
+    console.log(enteredUsername, enteredAge);
+    setEnteredUsername("");
+    setEnteredAge("");
   };
+
+  const usernameChangeHandler = (event) => {
+    if (event.target.value.trim().length > 0) {
+      setIsValid(true);
+    }
+    setEnteredUsername(event.target.value);
+  };
+
+  const ageChangeHandler = (event) => {
+    if (event.target.value < 0) {
+      setIsValid(false);
+      return;
+    }
+    setEnteredAge(event.target.value);
+  };
+
   return (
-    <div className="form-control">
+    <Card className="form-control">
       <form onSubmit={addUserHandler}>
         <label htmlFor="username">Username</label>
-        <input id="username" type="text"></input>
+        <input
+          id="username"
+          type="text"
+          value={enteredUsername}
+          onChange={usernameChangeHandler}
+        ></input>
         <label htmlFor="age">Age (Years)</label>
-        <input id="age" type="number"></input>
-        <button type="submit">Submit</button>
+        <input
+          id="age"
+          type="number"
+          value={enteredAge}
+          onChange={ageChangeHandler}
+        ></input>
+        <Button type="submit">{"Add User"}</Button>
       </form>
-    </div>
+    </Card>
   );
 };
 

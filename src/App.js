@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import Card from "./UI/Card/Card";
 import "./App.css";
+import AddUser from "./components/Users/UserInput/AddUser";
 
 const App = () => {
   // const [usernames, setUsernames] = useState("");
@@ -42,7 +42,7 @@ const App = () => {
       <section id="goals">
         {content}
       </section> */}
-      <Card />
+      <AddUser />
     </div>
   );
 };
