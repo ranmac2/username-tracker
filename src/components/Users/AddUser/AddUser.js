@@ -7,18 +7,22 @@ import Card from "../../../UI/Card/Card";
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
+  const [isValid, setIsValid] = useState(true);
 
   const addUserHandler = (event) => {
     event.preventDefault();
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+      setIsValid(false);
       return;
     }
     if (+enteredAge < 1) {
+      setIsValid(false);
       return;
     }
     props.onAddUser(enteredUsername, enteredAge);
     setEnteredUsername("");
     setEnteredAge("");
+    setIsValid(true);
   };
 
   const usernameChangeHandler = (event) => {

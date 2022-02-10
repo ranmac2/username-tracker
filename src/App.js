@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./App.css";
 import AddUser from "./components/Users/AddUser/AddUser";
 import UserList from "./components/Users/UserList/UserList";
+import ErrorModal from "./components/ErrorModal/ErrorModal";
 
 const App = () => {
   const [userList, setUserList] = useState([]);
@@ -29,6 +30,7 @@ const App = () => {
     <div>
       <AddUser onAddUser={addUserHandler} />
       <UserList users={userList} />
+      <ErrorModal />
     </div>
   );
 };
