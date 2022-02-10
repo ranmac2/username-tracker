@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import "./App.css";
-import AddUser from "./components/Users/UserInput/AddUser";
+import AddUser from "./components/Users/AddUser/AddUser";
 import UserList from "./components/Users/UserList/UserList";
 
 const App = () => {
@@ -9,7 +9,10 @@ const App = () => {
 
   const addUserHandler = (uName, uAge) => {
     setUserList((prevUsernames) => {
-      return [...prevUsernames, { name: uName, age: uAge }];
+      return [
+        ...prevUsernames,
+        { id: Math.random().toString(), name: uName, age: uAge },
+      ];
     });
   };
 
